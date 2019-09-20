@@ -3,25 +3,21 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      List
+    <ion-title id="lblTitulo">
+      Lista de Serviços
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
+  <ion-toolbar>
+    <ion-searchbar id="txtBuscar" placeholder="Buscar" (ionChange)="filtrarServicos($event)"></ion-searchbar>
+  </ion-toolbar>
+  <ion-list id="lstServicos">
+    <div *ngFor="let servico of servicos">
+      <ion-item class="itmServico" *ngIf="servico.active">
+        {{servico.name}}
+      </ion-item>
     </div>
-  -->
+  </ion-list>
 </ion-content>
